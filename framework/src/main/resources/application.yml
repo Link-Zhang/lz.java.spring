@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: framework
+  output:
+    ansi:
+      enabled: detect
+server:
+  port: 8443
+  ssl:
+    enabled: true
+    key-store: classpath:server.p12
+    key-store-password: keystore
+    key-store-type: PKCS12
+info:
+  app:
+    name: ${spring.application.name}
+    port: ${server.port}
+    version: @project.version@
+    jdk: @java.version@
+    cloud: @spring-cloud.version@
+management:
+  endpoints:
+    web:
+      base-path: /management
+      cors:
+        allowed-origins: '*'
+        allowed-methods: '*'
