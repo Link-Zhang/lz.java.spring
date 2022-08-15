@@ -4,9 +4,10 @@ import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
 import org.apache.tomcat.util.descriptor.web.SecurityCollection;
 import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.Banner;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 
@@ -18,14 +19,11 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class Application {
-    public static void main(String[] args) {
-//        Mode 1:
-//        SpringApplication.run(Application.class, args);
+    @Value("${server.port}")
+    private int serverPort;
 
-//        Mode 2:
-        SpringApplication app = new SpringApplication(Application.class);
-        app.setBannerMode(Banner.Mode.OFF);
-        app.run(args);
+    public static void main(String[] args) {
+        new SpringApplicationBuilder().bannerMode(Banner.Mode.OFF).sources(Application.class).run(args);
     }
 
     private Connector redirectConnector() {
@@ -33,7 +31,7 @@ public class Application {
         connector.setScheme("http");
         connector.setPort(8080);
         connector.setSecure(false);
-        connector.setRedirectPort(8443);
+        connector.setRedirectPort(serverPort);
         return connector;
     }
 

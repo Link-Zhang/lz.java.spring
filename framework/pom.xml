@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>spring-framework</artifactId>
-    <version>1.0.0.RELEASE</version>
+    <version>1.0.0</version>
 
     <name>spring-framework</name>
     <description>Link Zhang's Spring Framework Project</description>
@@ -13,7 +13,7 @@
     <parent>
         <artifactId>spring</artifactId>
         <groupId>cn.sh.lz</groupId>
-        <version>1.0.0.RELEASE</version>
+        <version>1.0.0</version>
     </parent>
 
     <properties>
@@ -34,7 +34,7 @@
             <version>${spring-boot.version}</version>
         </dependency>
 
-        <!--Spring Web-->
+        <!--Spring WebMVC-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
